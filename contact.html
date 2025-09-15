@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact - Travel Explorer</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Travel Explorer</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="my-bookings.html">My Bookings</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="contact-section section-bg">
+    <h1>Contact Us</h1>
+    <form id="contact-form" class="form-box">
+      <input type="text" id="name" placeholder="Your Full Name" required />
+      <input type="email" id="email" placeholder="Your Email Address" required />
+      <input type="text" id="subject" placeholder="Subject" required />
+      <textarea id="message" placeholder="Your Message" rows="6" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <div id="contact-success" class="booking-success" style="display:none;">Thank you! Your message has been saved locally.</div>
+  </section>
+
+  <footer>&copy; 2025 Travel Explorer.</footer>
+
+  <script>
+    const form=document.getElementById("contact-form");
+    const success=document.getElementById("contact-success");
+    form.addEventListener("submit",e=>{
+      e.preventDefault();
+      const messages=JSON.parse(localStorage.getItem("messages")||"[]");
+      messages.push({
+        name:document.getElementById("name").value,
+        email:document.getElementById("email").value,
+        subject:document.getElementById("subject").value,
+        message:document.getElementById("message").value,
+        date:new Date().toISOString()
+      });
+      localStorage.setItem("messages",JSON.stringify(messages));
+      form.style.display="none"; success.style.display="block";
+    });
+  </script>
+</body>
+</html>

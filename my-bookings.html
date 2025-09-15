@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Bookings - Travel Explorer</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Travel Explorer</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="my-bookings.html" class="active">My Bookings</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="section-bg">
+    <h1>My Bookings</h1>
+    <div id="bookings-container" class="grid-container"></div>
+  </section>
+
+  <footer>&copy; 2025 Travel Explorer.</footer>
+
+  <script>
+    const container=document.getElementById("bookings-container");
+    const bookings=JSON.parse(localStorage.getItem("bookings")||"[]");
+
+    if(bookings.length===0){
+      container.innerHTML="<p>No bookings yet.</p>";
+    } else {
+      bookings.forEach(b=>{
+        const card=document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML=`
+          <div class="card-content">
+            <h3>${b.destination}</h3>
+            <p><strong>Name:</strong> ${b.fullname}</p>
+            <p><strong>Email:</strong> ${b.email}</p>
+            <p><strong>Date:</strong> ${b.date}</p>
+            <p><strong>Guests:</strong> ${b.guests}</p>
+            <p><em>Booked on: ${new Date(b.createdAt).toLocaleString()}</em></p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Destinations - Travel Explorer</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Travel Explorer</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destinations.html" class="active">Destinations</a></li>
+        <li><a href="my-bookings.html">My Bookings</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero hero-small">
+    <div class="overlay"></div>
+    <h1>Destinations</h1>
+    <p>Discover handpicked places with stunning views and experiences.</p>
+  </section>
+
+  <section class="destinations-section section-bg">
+    <h2>Explore Our Top Picks</h2>
+    <div id="destinations-container" class="grid-container"></div>
+  </section>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="modal-close" class="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 Travel Explorer.</footer>
+
+  <script src="data/destinations.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/modal.js"></script>
+</body>
+</html>
